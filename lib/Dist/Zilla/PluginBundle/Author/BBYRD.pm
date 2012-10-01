@@ -132,7 +132,7 @@ sub configure {
       # ; Post-build Git plugins
       # [TravisYML]
       # test_min_deps = 1
-      $self->config_short_merge('MetaProvides::Package', { test_min_deps => 1 }),
+      $self->config_short_merge('TravisYML', { test_min_deps => 1 }),
 
       # 
       # [Git::CheckFor::CorrectBranch]
@@ -444,7 +444,7 @@ You can connect to the server at 'irc.perl.org' and join this channel: #distzill
 
 =head2 Bugs / Feature Requests
 
-Please report any bugs or feature requests via L<L<https://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD/issues>|GitHub>.
+Please report any bugs or feature requests via L<L<https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-Author-BBYRD>|GitHub>.
 
 =head1 AUTHOR
 
