@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use 5.010001;
+use 5.006;
 
 use ExtUtils::MakeMaker 6.30;
 
@@ -12,10 +12,14 @@ my %WriteMakefileArgs = (
   "ABSTRACT" => "DZIL Author Bundle for BBYRD",
   "AUTHOR" => "Brendan Byrd <BBYRD\@CPAN.org>",
   "BUILD_REQUIRES" => {
+    "File::Temp" => "0.22",
     "Test::CheckDeps" => "0.002",
-    "Test::UseAllModules" => "0.10"
+    "Test::More" => "0.88",
+    "Test::UseAllModules" => "0.14"
   },
-  "CONFIGURE_REQUIRES" => {},
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
+  },
   "DISTNAME" => "Dist-Zilla-PluginBundle-Author-BBYRD",
   "EXE_FILES" => [],
   "LICENSE" => "artistic_2",
@@ -53,12 +57,12 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::PluginBundle::Git::CheckFor" => "0.004",
     "Dist::Zilla::PluginBundle::GitHub" => "0.27",
     "Dist::Zilla::PluginBundle::Prereqs" => "0.91",
-    "Dist::Zilla::Role::PluginBundle::Merged" => "0.90",
-    "Moose" => "0.34",
+    "Dist::Zilla::Role::PluginBundle::Merged" => "0.91",
+    "Moose" => "2.0604",
     "autovivification" => "0.10",
     "indirect" => "0.26",
     "multidimensional" => "0.010",
-    "sanity" => "0.91"
+    "sanity" => "0.93"
   },
   "VERSION" => "0.90",
   "test" => {
