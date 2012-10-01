@@ -80,14 +80,14 @@ eval { $v .= pmver('Dist::Zilla::PluginBundle::Git','1.122530') };
 eval { $v .= pmver('Dist::Zilla::PluginBundle::Git::CheckFor','0.004') };
 eval { $v .= pmver('Dist::Zilla::PluginBundle::GitHub','0.27') };
 eval { $v .= pmver('Dist::Zilla::PluginBundle::Prereqs','0.91') };
-eval { $v .= pmver('Dist::Zilla::Role::PluginBundle::Merged','0.90') };
-eval { $v .= pmver('Moose','0.34') };
+eval { $v .= pmver('Dist::Zilla::Role::PluginBundle::Merged','0.91') };
+eval { $v .= pmver('Moose','2.0604') };
 eval { $v .= pmver('Test::CheckDeps','0.002') };
-eval { $v .= pmver('Test::UseAllModules','0.10') };
+eval { $v .= pmver('Test::UseAllModules','0.14') };
 eval { $v .= pmver('autovivification','0.10') };
 eval { $v .= pmver('indirect','0.26') };
 eval { $v .= pmver('multidimensional','0.010') };
-eval { $v .= pmver('sanity','0.91') };
+eval { $v .= pmver('sanity','0.93') };
 
 
 # All done.
