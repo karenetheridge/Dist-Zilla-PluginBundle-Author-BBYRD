@@ -22,11 +22,6 @@
       ]
    },
    "prereqs" : {
-      "configure" : {
-         "requires" : {
-            "ExtUtils::MakeMaker" : "6.30"
-         }
-      },
       "runtime" : {
          "requires" : {
             "Dist::Zilla" : "4.300024",
@@ -66,15 +61,13 @@
             "autovivification" : "0.10",
             "indirect" : "0.26",
             "multidimensional" : "0.010",
-            "perl" : "5.006",
+            "perl" : "v5.10.1",
             "sanity" : "0.93"
          }
       },
       "test" : {
          "requires" : {
-            "File::Temp" : "0.22",
             "Test::CheckDeps" : "0.002",
-            "Test::More" : "0.88",
             "Test::UseAllModules" : "0.14"
          }
       }

@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use 5.006;
+use 5.010001;
 
 use ExtUtils::MakeMaker 6.30;
 
@@ -12,14 +12,10 @@ my %WriteMakefileArgs = (
   "ABSTRACT" => "DZIL Author Bundle for BBYRD",
   "AUTHOR" => "Brendan Byrd <BBYRD\@CPAN.org>",
   "BUILD_REQUIRES" => {
-    "File::Temp" => "0.22",
     "Test::CheckDeps" => "0.002",
-    "Test::More" => "0.88",
     "Test::UseAllModules" => "0.14"
   },
-  "CONFIGURE_REQUIRES" => {
-    "ExtUtils::MakeMaker" => "6.30"
-  },
+  "CONFIGURE_REQUIRES" => {},
   "DISTNAME" => "Dist-Zilla-PluginBundle-Author-BBYRD",
   "EXE_FILES" => [],
   "LICENSE" => "artistic_2",

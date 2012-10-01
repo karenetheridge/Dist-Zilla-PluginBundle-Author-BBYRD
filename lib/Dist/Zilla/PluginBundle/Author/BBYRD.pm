@@ -43,9 +43,7 @@ sub configure {
 
       # [ReadmeAnyFromPod / ReadmeHtmlInBuild]
       # [ReadmeAnyFromPod / ReadmePodInBuild]
-      { plugin_name => 'ReadmeHtmlInBuild' }, 'ReadmeAnyFromPod',
-      { plugin_name => 'ReadmePodInBuild'  }, 'ReadmeAnyFromPod',
-      $self->payload,
+      ### MOVED TO THE BOTTOM ###
 
       # [InstallGuide]
       # [ExecDir]
@@ -176,6 +174,13 @@ sub configure {
       # [InstallRelease]
       # [Clean]
       qw( TestRelease ConfirmRelease UploadToCPAN InstallRelease Clean ),
+   );
+   
+   # [ReadmeAnyFromPod / ReadmeHtmlInBuild]
+   # [ReadmeAnyFromPod / ReadmePodInBuild]
+   $self->add_plugins(
+      [ReadmeAnyFromPod => ReadmeHtmlInBuild => {}],
+      [ReadmeAnyFromPod => ReadmePodInBuild  => {}],
    );
 }
 
