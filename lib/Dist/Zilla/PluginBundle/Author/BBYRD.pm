@@ -22,7 +22,7 @@ sub configure {
       
       # [Git::NextVersion]
       # first_version = 0.90
-      { first_version => '0.90', %{$self->payload} }, 'Git::NextVersion', $self->payload,
+      $self->config_short_merge('Git::NextVersion', { first_version => '0.90' }),
 
       #
       # [Git::GatherDir]
@@ -66,7 +66,7 @@ sub configure {
 
       # [Test::EOL]
       # trailing_whitespace = 0
-      { trailing_whitespace => 0, %{$self->payload} }, 'Test::EOL', $self->payload,
+      $self->config_short_merge('Test::EOL', { trailing_whitespace => 0 }),
 
       # 
       # [Test::CPAN::Meta::JSON]
@@ -88,7 +88,7 @@ sub configure {
       # ; Prereqs
       # [@Prereqs]
       # minimum_perl = 5.10.1
-      { minimum_perl => '5.10.1', %{$self->payload} }, '@Prereqs', $self->payload,
+      $self->config_short_merge('@Prereqs', { minimum_perl => '5.10.1' }),
 
       # 
       # [CheckPrereqsIndexed]
@@ -104,51 +104,49 @@ sub configure {
       # directory = xt
       # directory = examples
       # directory = corpus
-      { directory => [qw(t xt examples corpus)], %{$self->payload} }, 'MetaNoIndex', $self->payload,
+      $self->config_short_merge('MetaNoIndex', { directory => [qw(t xt examples corpus)] }),
 
       # 
       # [MetaProvides::Package]
       # meta_noindex = 1        ; respect prior no_index directives
-      { meta_noindex => 1, %{$self->payload} }, 'MetaProvides::Package', $self->payload,
+      $self->config_short_merge('MetaProvides::Package', { meta_noindex => 1 }),
 
       # 
       # [MetaResourcesFromGit]
       # x_irc          = irc://irc.perl.org/#distzilla
       # bugtracker.web = https://github.com/%a/%r/issues
-      { 
+      $self->config_short_merge('MetaResourcesFromGit', { 
          x_irc            => 'irc://irc.perl.org/#distzilla',
          'bugtracker.web' => 'https://github.com/%a/%r/issues',
-         %{$self->payload},
-      }, 'MetaResourcesFromGit', $self->payload,
+      }),
 
       # 
       # ; Post-build plugins
       # [CopyFilesFromBuild]
       # move = .gitignore
       # copy = README.pod
-      { 
+      $self->config_short_merge('CopyFilesFromBuild', { 
          move => ['.gitignore'],
          copy => ['README.pod'],
-         %{$self->payload},
-      }, 'CopyFilesFromBuild', $self->payload,
+      }),
 
       # 
       # ; Post-build Git plugins
       # [TravisYML]
       # test_min_deps = 1
-      { test_min_deps => 1, %{$self->payload} }, 'MetaProvides::Package', $self->payload,
+      $self->config_short_merge('MetaProvides::Package', { test_min_deps => 1 }),
 
       # 
       # [Git::CheckFor::CorrectBranch]
+      'Git::CheckFor::CorrectBranch',
+
       # [Git::CommitBuild]
       # release_branch = build/%b
       # release_message = Release build of v%v (on %b)
-      'Git::CheckFor::CorrectBranch',
-      {
+      $self->config_short_merge('Git::CommitBuild', { 
          release_branch  => 'build/%b',
          release_message => 'Release build of v%v (on %b)',
-         %{$self->payload},
-      }, 'Git::CommitBuild', $self->payload,
+      }),
 
       # 
       # [@Git]
@@ -159,18 +157,17 @@ sub configure {
       # commit_msg = Release v%v
       # push_to = origin
       # push_to = origin build/master:build/master
-      {
+      $self->config_short_merge('@Git', { 
          allow_dirty => [qw(dist.ini .travis.yml README.pod)],
          changelog   => '',
          commit_msg  => 'Release v%v',
          push_to     => ['origin', 'origin build/master:build/master'],
-         %{$self->payload},
-      }, '@Git', $self->payload,
+      }),
 
       # 
       # [GitHub::Update]
       # metacpan = 1
-      { metacpan => 1, %{$self->payload} }, 'GitHub::Update', $self->payload,
+      $self->config_short_merge('GitHub::Update', { metacpan => 1 }),
 
       # 
       # [TestRelease]
@@ -179,6 +176,16 @@ sub configure {
       # [InstallRelease]
       # [Clean]
       qw( TestRelease ConfirmRelease UploadToCPAN InstallRelease Clean ),
+   );
+}
+
+### TODO: This should probably go into DZIL:R:PB:Merged
+sub config_short_merge {
+   my ($self, $mod_list, $config_hash) = @_;
+   return (
+      { %$config_hash, %{$self->payload} },
+      (ref $mod_list ? @$mod_list : $mod_list),
+      $self->payload,
    );
 }
 
