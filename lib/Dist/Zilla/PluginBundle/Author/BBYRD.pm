@@ -82,7 +82,7 @@ sub configure {
       # [Test::UseAllModules]
       # [Test::Version]
       (map { 'Test::'.$_ } qw(CPAN::Meta::JSON CheckDeps Portability Synopsis MinimumVersion CheckManifest DistManifest UseAllModules Version)),
-      'ReportVersions::Tiny'
+      'ReportVersions::Tiny',
 
       # 
       # ; Prereqs
