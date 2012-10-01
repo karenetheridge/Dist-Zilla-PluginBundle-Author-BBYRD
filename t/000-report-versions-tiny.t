@@ -49,10 +49,45 @@ sub pmver {
     return sprintf('%-45s => %-10s%-15s%s', $module, $pmver, $wanted, "\n");
 }
 
+eval { $v .= pmver('Dist::Zilla','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::CheckExtraTests','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::CheckPrereqsIndexed','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::Clean','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::CopyFilesFromBuild','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::GitFmtChanges','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::InstallGuide','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::InstallRelease','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::MetaProvides::Package','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::MetaResourcesFromGit','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::NoTabsTests','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::OurPkgVersion','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::PodWeaver','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::ReadmeAnyFromPod','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::ReportPhase','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::ReportVersions::Tiny','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::Test::CPAN::Meta::JSON','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::Test::CheckDeps','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::Test::CheckManifest','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::Test::Compile','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::Test::DistManifest','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::Test::EOL','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::Test::MinimumVersion','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::Test::Portability','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::Test::Synopsis','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::Test::UseAllModules','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::Test::Version','any version') };
+eval { $v .= pmver('Dist::Zilla::Plugin::TravisYML','any version') };
+eval { $v .= pmver('Dist::Zilla::PluginBundle::Git','any version') };
+eval { $v .= pmver('Dist::Zilla::PluginBundle::Git::CheckFor','any version') };
+eval { $v .= pmver('Dist::Zilla::PluginBundle::GitHub','any version') };
+eval { $v .= pmver('Dist::Zilla::PluginBundle::Prereqs','any version') };
 eval { $v .= pmver('Dist::Zilla::Role::PluginBundle::Merged','0.90') };
 eval { $v .= pmver('Moose','0.34') };
 eval { $v .= pmver('Test::CheckDeps','0.002') };
 eval { $v .= pmver('Test::UseAllModules','0.10') };
+eval { $v .= pmver('autovivification','any version') };
+eval { $v .= pmver('indirect','any version') };
+eval { $v .= pmver('multidimensional','any version') };
 eval { $v .= pmver('sanity','0.91') };
 
 

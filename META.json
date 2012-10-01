@@ -24,8 +24,43 @@
    "prereqs" : {
       "runtime" : {
          "requires" : {
+            "Dist::Zilla" : "0",
+            "Dist::Zilla::Plugin::CheckExtraTests" : "0",
+            "Dist::Zilla::Plugin::CheckPrereqsIndexed" : "0",
+            "Dist::Zilla::Plugin::Clean" : "0",
+            "Dist::Zilla::Plugin::CopyFilesFromBuild" : "0",
+            "Dist::Zilla::Plugin::GitFmtChanges" : "0",
+            "Dist::Zilla::Plugin::InstallGuide" : "0",
+            "Dist::Zilla::Plugin::InstallRelease" : "0",
+            "Dist::Zilla::Plugin::MetaProvides::Package" : "0",
+            "Dist::Zilla::Plugin::MetaResourcesFromGit" : "0",
+            "Dist::Zilla::Plugin::NoTabsTests" : "0",
+            "Dist::Zilla::Plugin::OurPkgVersion" : "0",
+            "Dist::Zilla::Plugin::PodWeaver" : "0",
+            "Dist::Zilla::Plugin::ReadmeAnyFromPod" : "0",
+            "Dist::Zilla::Plugin::ReportPhase" : "0",
+            "Dist::Zilla::Plugin::ReportVersions::Tiny" : "0",
+            "Dist::Zilla::Plugin::Test::CPAN::Meta::JSON" : "0",
+            "Dist::Zilla::Plugin::Test::CheckDeps" : "0",
+            "Dist::Zilla::Plugin::Test::CheckManifest" : "0",
+            "Dist::Zilla::Plugin::Test::Compile" : "0",
+            "Dist::Zilla::Plugin::Test::DistManifest" : "0",
+            "Dist::Zilla::Plugin::Test::EOL" : "0",
+            "Dist::Zilla::Plugin::Test::MinimumVersion" : "0",
+            "Dist::Zilla::Plugin::Test::Portability" : "0",
+            "Dist::Zilla::Plugin::Test::Synopsis" : "0",
+            "Dist::Zilla::Plugin::Test::UseAllModules" : "0",
+            "Dist::Zilla::Plugin::Test::Version" : "0",
+            "Dist::Zilla::Plugin::TravisYML" : "0",
+            "Dist::Zilla::PluginBundle::Git" : "0",
+            "Dist::Zilla::PluginBundle::Git::CheckFor" : "0",
+            "Dist::Zilla::PluginBundle::GitHub" : "0",
+            "Dist::Zilla::PluginBundle::Prereqs" : "0",
             "Dist::Zilla::Role::PluginBundle::Merged" : "0.90",
             "Moose" : "0.34",
+            "autovivification" : "0",
+            "indirect" : "0",
+            "multidimensional" : "0",
             "perl" : "v5.10.1",
             "sanity" : "0.91"
          }
@@ -233,6 +268,17 @@
             "class" : "Dist::Zilla::Plugin::PrereqsClean",
             "name" : "@Prereqs/PrereqsClean",
             "version" : "0.91"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::Prereqs",
+            "config" : {
+               "Dist::Zilla::Plugin::Prereqs" : {
+                  "phase" : "runtime",
+                  "type" : "requires"
+               }
+            },
+            "name" : "Prereqs",
+            "version" : "4.300023"
          },
          {
             "class" : "Dist::Zilla::Plugin::CheckPrereqsIndexed",
