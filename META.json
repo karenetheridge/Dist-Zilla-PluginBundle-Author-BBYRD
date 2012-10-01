@@ -282,11 +282,6 @@
             "version" : "0.103510"
          },
          {
-            "class" : "Dist::Zilla::Plugin::TravisYML",
-            "name" : "@Filter/TravisYML",
-            "version" : "0.94"
-         },
-         {
             "class" : "Dist::Zilla::Plugin::Git::CheckFor::CorrectBranch",
             "name" : "@Filter/Git::CheckFor::CorrectBranch",
             "version" : "0.004"

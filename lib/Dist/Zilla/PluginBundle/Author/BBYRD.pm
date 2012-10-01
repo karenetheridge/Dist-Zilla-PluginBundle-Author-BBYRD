@@ -40,11 +40,14 @@ sub configure {
       # [Manifest]
       # [License]
       qw( Git::GatherDir OurPkgVersion PodWeaver PruneCruft GitFmtChanges ManifestSkip Manifest License ),
-
+   );
+   $self->add_plugins(
       # [ReadmeAnyFromPod / ReadmeHtmlInBuild]
       # [ReadmeAnyFromPod / ReadmePodInBuild]
-      ### MOVED TO THE BOTTOM ###
-
+      [ReadmeAnyFromPod => ReadmeHtmlInBuild => {}],
+      [ReadmeAnyFromPod => ReadmePodInBuild  => {}],
+   );
+   $self->add_merged(
       # [InstallGuide]
       # [ExecDir]
       # 
@@ -113,10 +116,10 @@ sub configure {
       # [MetaResourcesFromGit]
       # x_irc          = irc://irc.perl.org/#distzilla
       # bugtracker.web = https://github.com/%a/%r/issues
-      $self->config_short_merge('MetaResourcesFromGit', { 
-         x_irc            => 'irc://irc.perl.org/#distzilla',
+      { 
+         x_irc            => (exists $self->payload->{x_irc} ? $self->payload->{x_irc} : 'irc://irc.perl.org/#distzilla'),
          'bugtracker.web' => 'https://github.com/%a/%r/issues',
-      }),
+      }, 'MetaResourcesFromGit', $self->payload,
 
       # 
       # ; Post-build plugins
@@ -174,13 +177,6 @@ sub configure {
       # [InstallRelease]
       # [Clean]
       qw( TestRelease ConfirmRelease UploadToCPAN InstallRelease Clean ),
-   );
-   
-   # [ReadmeAnyFromPod / ReadmeHtmlInBuild]
-   # [ReadmeAnyFromPod / ReadmePodInBuild]
-   $self->add_plugins(
-      [ReadmeAnyFromPod => ReadmeHtmlInBuild => {}],
-      [ReadmeAnyFromPod => ReadmePodInBuild  => {}],
    );
 }
 
@@ -355,12 +351,15 @@ for more information.
 
 =head1 CAVEATS
 
-This uses LE<lt>Dist::Zilla::Role::PluginBundle::MergedE<gt>, so all of the plugin
-arguments are available, using that plugin's rules.  Special care should be
+This uses LE<lt>Dist::Zilla::Role::PluginBundle::MergedE<gt>, so all of the plugins'
+arguments are available, using Merged's rules.  Special care should be
 made with arguments that might not be unique with other plugins.  (Eventually,
 I'll throw these into CE<lt>config_renameE<gt>.)
 
 If this is a problem, you might want to consider using LE<lt>Dist::Zilla::PluginBundle::FilterE<verbar>@FilterE<gt>.
+
+One exception is CE<lt>x_ircE<gt>, which is detected and passed to LE<lt>Dist::Zilla::Plugin::MetaResourcesFromGitE<verbar>MetaResourcesFromGitE<gt>
+properly.
 
 =head1 SEE ALSO
 

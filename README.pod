@@ -155,12 +155,15 @@ for more information.
 
 =head1 CAVEATS
 
-This uses LE<lt>Dist::Zilla::Role::PluginBundle::MergedE<gt>, so all of the plugin
-arguments are available, using that plugin's rules.  Special care should be
+This uses LE<lt>Dist::Zilla::Role::PluginBundle::MergedE<gt>, so all of the plugins'
+arguments are available, using Merged's rules.  Special care should be
 made with arguments that might not be unique with other plugins.  (Eventually,
 I'll throw these into CE<lt>config_renameE<gt>.)
 
 If this is a problem, you might want to consider using LE<lt>Dist::Zilla::PluginBundle::FilterE<verbar>@FilterE<gt>.
+
+One exception is CE<lt>x_ircE<gt>, which is detected and passed to LE<lt>Dist::Zilla::Plugin::MetaResourcesFromGitE<verbar>MetaResourcesFromGitE<gt>
+properly.
 
 =head1 SEE ALSO
 
