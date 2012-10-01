@@ -174,11 +174,6 @@
             "version" : "1.112820"
          },
          {
-            "class" : "Dist::Zilla::Plugin::PodCoverageTests",
-            "name" : "@Filter/PodCoverageTests",
-            "version" : "4.300024"
-         },
-         {
             "class" : "Dist::Zilla::Plugin::PodSyntaxTests",
             "name" : "@Filter/PodSyntaxTests",
             "version" : "4.300024"
@@ -212,11 +207,6 @@
             "class" : "Dist::Zilla::Plugin::Test::Portability",
             "name" : "@Filter/Test::Portability",
             "version" : "2.000003"
-         },
-         {
-            "class" : "Dist::Zilla::Plugin::Test::Synopsis",
-            "name" : "@Filter/Test::Synopsis",
-            "version" : "2.000002"
          },
          {
             "class" : "Dist::Zilla::Plugin::Test::MinimumVersion",
