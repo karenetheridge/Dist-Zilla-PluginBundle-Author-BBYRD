@@ -1,6 +1,15 @@
 Revision History for Dist-Zilla-PluginBundle-Author-BBYRD
 =========================================================
 
+v0.91 2012-10-02
+----------------
+
+commit 95a04419f6a02d765d351f9fddbab506779ab2af
+Author: Brendan Byrd <Perl@ResonatorSoft.org>
+Date:   Tue Oct 2 08:39:23 2012 -0400
+
+    Fix POD
+
 ===================================
 End of changes in the last 365 days
 ===================================
