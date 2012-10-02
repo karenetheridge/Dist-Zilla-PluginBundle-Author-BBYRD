@@ -324,8 +324,8 @@ __END__
  
 = DESCRIPTION
  
-L<sanity|I frelling hate these things>, but several releases in, I found myself
-needing to keep my C<dist.ini> stuff in sync, which requires a single module to
+[I frelling hate these things|sanity], but several releases in, I found myself
+needing to keep my {dist.ini} stuff in sync, which requires a single module to
 bind them to.
 
 = NAMING SCHEME
@@ -337,33 +337,33 @@ which modules are available vs. which ones actually work.  (Which all stem
 from the same base problem, so I'm almost repeating myself...)
 
 Like I said, I hate writing these personalized modules on CPAN.  I even bantered
-around the idea of using L<https://github.com/SineSwiper/Dist-Zilla-PluginBundle-BeLike-You/blob/master/BeLike-You.pod|MetaCPAN's author JSON input>
+around the idea of using [MetaCPAN's author JSON input|https://github.com/SineSwiper/Dist-Zilla-PluginBundle-BeLike-You/blob/master/BeLike-You.pod]
 to store the plugin data.  However, keeping the Author plugins separated from the
 real PluginBundles is a step in the right direction.  See
-L<Dist::Zilla::PluginBundle::Author::KENTNL/NAMING-SCHEME|KENTNL's comments on the Author namespace>
+[KENTNL's comments on the Author namespace|Dist::Zilla::PluginBundle::Author::KENTNL/NAMING-SCHEME]
 for more information.
 
 = CAVEATS
 
-This uses L<Dist::Zilla::Role::PluginBundle::Merged>, so all of the plugins'
+This uses [Dist::Zilla::Role::PluginBundle::Merged], so all of the plugins'
 arguments are available, using Merged's rules.  Special care should be
 made with arguments that might not be unique with other plugins.  (Eventually,
-I'll throw these into C<config_rename>.)
+I'll throw these into {config_rename}.)
 
-If this is a problem, you might want to consider using L<Dist::Zilla::PluginBundle::Filter|@Filter>.
+If this is a problem, you might want to consider using [@Filter|Dist::Zilla::PluginBundle::Filter].
 
-One exception is C<x_irc>, which is detected and passed to L<Dist::Zilla::Plugin::MetaResourcesFromGit|MetaResourcesFromGit>
+One exception is {x_irc}, which is detected and passed to [MetaResourcesFromGit|Dist::Zilla::Plugin::MetaResourcesFromGit]
 properly.
 
 = SEE ALSO
 
-In building my ultimate C<dist.ini> file, I did a bunch of research on which
+In building my ultimate {dist.ini} file, I did a bunch of research on which
 modules to cram in here.  As a result, this is a pretty large set of plugins,
 but that's exactly how I like my DZIL.  Feel free to research the modules
 listed here, as there's a bunch of good modules that you might want to include
-in your own C<dist.ini> and/or Author bundle.
+in your own {dist.ini} and/or Author bundle.
 
-Also, here's my C<profile.ini>, if you're interested:
+Also, here's my {profile.ini}, if you're interested:
 
    [TemplateModule/:DefaultModuleMaker]
    template = Module.pm
@@ -404,6 +404,6 @@ Also, here's my C<profile.ini>, if you're interested:
 
 = TODO
 
-Create a L<Pod::Weaver> author bundle.
+Create a [Pod::Weaver] author bundle.
 
 =end wikidoc
