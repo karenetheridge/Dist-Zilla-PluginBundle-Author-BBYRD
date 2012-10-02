@@ -116,11 +116,14 @@ sub configure {
       # [MetaResourcesFromGit]
       # x_irc          = irc://irc.perl.org/#distzilla
       # bugtracker.web = https://github.com/%a/%r/issues
-      { 
+   );
+   $self->add_plugins(  # freeform option plugin
+      [MetaResourcesFromGit => {
          x_irc            => (exists $self->payload->{x_irc} ? $self->payload->{x_irc} : 'irc://irc.perl.org/#distzilla'),
          'bugtracker.web' => 'https://github.com/%a/%r/issues',
-      }, 'MetaResourcesFromGit', $self->payload,
-
+      }],
+   );
+   $self->add_merged(
       # 
       # ; Post-build plugins
       # [CopyFilesFromBuild]
