@@ -330,7 +330,7 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
 
 =head1 DESCRIPTION
 
-L<sanity|I frelling hate these things>, but several releases in, I found myself
+L<I frelling hate these things|sanity>, but several releases in, I found myself
 needing to keep my C<<< dist.ini >>> stuff in sync, which requires a single module to
 bind them to.
 
@@ -343,10 +343,10 @@ which modules are available vs. which ones actually work.  (Which all stem
 from the same base problem, so I'm almost repeating myself...)
 
 Like I said, I hate writing these personalized modules on CPAN.  I even bantered
-around the idea of using L<https:E<sol>E<sol>github.comE<sol>SineSwiperE<sol>Dist-Zilla-PluginBundle-BeLike-YouE<sol>blobE<sol>masterE<sol>BeLike-You.pod|MetaCPAN's author JSON input>
+around the idea of using L<MetaCPAN's author JSON input|https://github.com/SineSwiper/Dist-Zilla-PluginBundle-BeLike-You/blob/master/BeLike-You.pod>
 to store the plugin data.  However, keeping the Author plugins separated from the
 real PluginBundles is a step in the right direction.  See
-L<Dist::Zilla::PluginBundle::Author::KENTNLE<sol>NAMING-SCHEME|KENTNL's comments on the Author namespace>
+L<KENTNL's comments on the Author namespace|Dist::Zilla::PluginBundle::Author::KENTNL/NAMING-SCHEME>
 for more information.
 
 =head1 CAVEATS
@@ -356,9 +356,9 @@ arguments are available, using Merged's rules.  Special care should be
 made with arguments that might not be unique with other plugins.  (Eventually,
 I'll throw these into C<<< config_rename >>>.)
 
-If this is a problem, you might want to consider using L<Dist::Zilla::PluginBundle::Filter|@Filter>.
+If this is a problem, you might want to consider using L<@Filter|Dist::Zilla::PluginBundle::Filter>.
 
-One exception is C<<< x_irc >>>, which is detected and passed to L<Dist::Zilla::Plugin::MetaResourcesFromGit|MetaResourcesFromGit>
+One exception is C<<< x_irc >>>, which is detected and passed to L<MetaResourcesFromGit|Dist::Zilla::Plugin::MetaResourcesFromGit>
 properly.
 
 =head1 SEE ALSO
