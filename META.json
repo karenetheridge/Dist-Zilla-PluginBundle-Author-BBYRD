@@ -88,14 +88,15 @@
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-Author-BBYRD"
+         "web" : "https://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD/issues"
       },
       "homepage" : "https://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD/wiki",
       "repository" : {
          "type" : "git",
          "url" : "git://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD.git",
          "web" : "https://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD"
-      }
+      },
+      "x_irc" : "irc://irc.perl.org/#distzilla"
    },
    "version" : "0.92",
    "x_Dist_Zilla" : {
