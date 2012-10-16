@@ -97,7 +97,8 @@ sub configure {
       # ; META maintenance
       # [MetaConfig]
       # [MetaJSON]
-      qw( CheckPrereqsIndexed MetaConfig MetaJSON ),
+      # [MetaYAML]
+      qw( CheckPrereqsIndexed MetaConfig MetaJSON MetaYAML ),
       
       # 
       # [MetaNoIndex]
@@ -267,6 +268,7 @@ __END__
    ; META maintenance
    [MetaConfig]
    [MetaJSON]
+   [MetaYAML]
 
    [MetaNoIndex]
    directory = t
