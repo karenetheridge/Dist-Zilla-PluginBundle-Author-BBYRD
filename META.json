@@ -24,7 +24,7 @@
    "prereqs" : {
       "runtime" : {
          "requires" : {
-            "Dist::Zilla" : "4.300024",
+            "Dist::Zilla" : "4.300026",
             "Dist::Zilla::Plugin::CheckExtraTests" : "0.007",
             "Dist::Zilla::Plugin::CheckPrereqsIndexed" : "0.007",
             "Dist::Zilla::Plugin::Clean" : "0.07",
@@ -39,7 +39,7 @@
             "Dist::Zilla::Plugin::PodWeaver" : "3.101641",
             "Dist::Zilla::Plugin::ReadmeAnyFromPod" : "0.120120",
             "Dist::Zilla::Plugin::ReportPhase" : "0",
-            "Dist::Zilla::Plugin::ReportVersions::Tiny" : "1.06",
+            "Dist::Zilla::Plugin::ReportVersions::Tiny" : "1.08",
             "Dist::Zilla::Plugin::Test::CPAN::Meta::JSON" : "0.003",
             "Dist::Zilla::Plugin::Test::CheckDeps" : "0.005",
             "Dist::Zilla::Plugin::Test::CheckManifest" : "0.04",
@@ -51,9 +51,9 @@
             "Dist::Zilla::Plugin::Test::Synopsis" : "2.000002",
             "Dist::Zilla::Plugin::Test::UseAllModules" : "0.002",
             "Dist::Zilla::Plugin::Test::Version" : "0.002004",
-            "Dist::Zilla::Plugin::TravisYML" : "0.94",
-            "Dist::Zilla::PluginBundle::Git" : "1.122530",
-            "Dist::Zilla::PluginBundle::Git::CheckFor" : "0.004",
+            "Dist::Zilla::Plugin::TravisYML" : "0.95",
+            "Dist::Zilla::PluginBundle::Git" : "2.001",
+            "Dist::Zilla::PluginBundle::Git::CheckFor" : "0.005",
             "Dist::Zilla::PluginBundle::GitHub" : "0.27",
             "Dist::Zilla::PluginBundle::Prereqs" : "0.91",
             "Dist::Zilla::Role::PluginBundle::Merged" : "0.91",
@@ -69,7 +69,7 @@
             "indirect" : "0.26",
             "multidimensional" : "0.010",
             "perl" : "v5.10.1",
-            "sanity" : "0.93"
+            "sanity" : "0.94"
          }
       },
       "test" : {
@@ -82,7 +82,7 @@
    "provides" : {
       "Dist::Zilla::PluginBundle::Author::BBYRD" : {
          "file" : "lib/Dist/Zilla/PluginBundle/Author/BBYRD.pm",
-         "version" : "0.92"
+         "version" : "0.93"
       }
    },
    "release_status" : "stable",
@@ -98,7 +98,7 @@
       },
       "x_irc" : "irc://irc.perl.org/#distzilla"
    },
-   "version" : "0.92",
+   "version" : "0.93",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.016000"

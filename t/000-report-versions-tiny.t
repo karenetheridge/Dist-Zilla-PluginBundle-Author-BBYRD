@@ -48,7 +48,7 @@ sub pmver {
     return sprintf('%-45s => %-10s%-15s%s', $module, $pmver, $wanted, "\n");
 }
 
-eval { $v .= pmver('Dist::Zilla','4.300024') };
+eval { $v .= pmver('Dist::Zilla','4.300026') };
 eval { $v .= pmver('Dist::Zilla::Plugin::CheckExtraTests','0.007') };
 eval { $v .= pmver('Dist::Zilla::Plugin::CheckPrereqsIndexed','0.007') };
 eval { $v .= pmver('Dist::Zilla::Plugin::Clean','0.07') };
@@ -63,7 +63,7 @@ eval { $v .= pmver('Dist::Zilla::Plugin::OurPkgVersion','0.004000') };
 eval { $v .= pmver('Dist::Zilla::Plugin::PodWeaver','3.101641') };
 eval { $v .= pmver('Dist::Zilla::Plugin::ReadmeAnyFromPod','0.120120') };
 eval { $v .= pmver('Dist::Zilla::Plugin::ReportPhase','any version') };
-eval { $v .= pmver('Dist::Zilla::Plugin::ReportVersions::Tiny','1.06') };
+eval { $v .= pmver('Dist::Zilla::Plugin::ReportVersions::Tiny','1.08') };
 eval { $v .= pmver('Dist::Zilla::Plugin::Test::CPAN::Meta::JSON','0.003') };
 eval { $v .= pmver('Dist::Zilla::Plugin::Test::CheckDeps','0.005') };
 eval { $v .= pmver('Dist::Zilla::Plugin::Test::CheckManifest','0.04') };
@@ -75,9 +75,9 @@ eval { $v .= pmver('Dist::Zilla::Plugin::Test::Portability','2.000003') };
 eval { $v .= pmver('Dist::Zilla::Plugin::Test::Synopsis','2.000002') };
 eval { $v .= pmver('Dist::Zilla::Plugin::Test::UseAllModules','0.002') };
 eval { $v .= pmver('Dist::Zilla::Plugin::Test::Version','0.002004') };
-eval { $v .= pmver('Dist::Zilla::Plugin::TravisYML','0.94') };
-eval { $v .= pmver('Dist::Zilla::PluginBundle::Git','1.122530') };
-eval { $v .= pmver('Dist::Zilla::PluginBundle::Git::CheckFor','0.004') };
+eval { $v .= pmver('Dist::Zilla::Plugin::TravisYML','0.95') };
+eval { $v .= pmver('Dist::Zilla::PluginBundle::Git','2.001') };
+eval { $v .= pmver('Dist::Zilla::PluginBundle::Git::CheckFor','0.005') };
 eval { $v .= pmver('Dist::Zilla::PluginBundle::GitHub','0.27') };
 eval { $v .= pmver('Dist::Zilla::PluginBundle::Prereqs','0.91') };
 eval { $v .= pmver('Dist::Zilla::Role::PluginBundle::Merged','0.91') };
@@ -94,7 +94,7 @@ eval { $v .= pmver('Test::UseAllModules','0.14') };
 eval { $v .= pmver('autovivification','0.10') };
 eval { $v .= pmver('indirect','0.26') };
 eval { $v .= pmver('multidimensional','0.010') };
-eval { $v .= pmver('sanity','0.93') };
+eval { $v .= pmver('sanity','0.94') };
 
 
 # All done.
