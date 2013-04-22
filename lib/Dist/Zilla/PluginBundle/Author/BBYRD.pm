@@ -29,7 +29,12 @@ sub configure {
       #
       # ; File modifiers
       # [OurPkgVersion]
+      qw( Git::GatherDir OurPkgVersion ),
+
       # [PodWeaver]
+      # config_plugin = @Author::BBYRD
+      $self->config_short_merge('PodWeaver', { config_plugin => '@Author::BBYRD' }),
+      
       #
       # ; File pruners
       # [PruneCruft]
@@ -39,7 +44,7 @@ sub configure {
       # [ManifestSkip]
       # [Manifest]
       # [License]
-      qw( Git::GatherDir OurPkgVersion PodWeaver PruneCruft GitFmtChanges ManifestSkip Manifest License ),
+      qw( PruneCruft GitFmtChanges ManifestSkip Manifest License ),
    );
    $self->add_plugins(
       # [ReadmeAnyFromPod / ReadmeHtmlInBuild]
@@ -217,6 +222,7 @@ __END__
    ; File modifiers
    [OurPkgVersion]
    [PodWeaver]
+   config_plugin = @Author::BBYRD
 
    ; File pruners
    [PruneCruft]
@@ -314,13 +320,6 @@ __END__
    [UploadToCPAN]
    [InstallRelease]
    [Clean]
-
-   ; PodWeaver deps
-   ; authordep Pod::Weaver::Plugin::WikiDoc
-   ; authordep Pod::Weaver::Plugin::Encoding
-   ; authordep Pod::Weaver::Section::Availability
-   ; authordep Pod::Weaver::Section::Support
-   ; authordep Pod::Elemental::Transformer::List
 
    ; sanity deps
    ; authordep autovivification
