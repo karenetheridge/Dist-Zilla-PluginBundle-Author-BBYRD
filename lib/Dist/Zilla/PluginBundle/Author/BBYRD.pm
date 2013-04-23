@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::Author::BBYRD;
 
-our $VERSION = '0.93'; # VERSION
+our $VERSION = '0.95'; # VERSION
 # ABSTRACT: DZIL Author Bundle for BBYRD
 
 use sanity;
@@ -29,7 +29,12 @@ sub configure {
       #
       # ; File modifiers
       # [OurPkgVersion]
+      qw( Git::GatherDir OurPkgVersion ),
+
       # [PodWeaver]
+      # config_plugin = @Author::BBYRD
+      $self->config_short_merge('PodWeaver', { config_plugin => '@Author::BBYRD' }),
+      
       #
       # ; File pruners
       # [PruneCruft]
@@ -39,7 +44,7 @@ sub configure {
       # [ManifestSkip]
       # [Manifest]
       # [License]
-      qw( Git::GatherDir OurPkgVersion PodWeaver PruneCruft GitFmtChanges ManifestSkip Manifest License ),
+      qw( PruneCruft GitFmtChanges ManifestSkip Manifest License ),
    );
    $self->add_plugins(
       # [ReadmeAnyFromPod / ReadmeHtmlInBuild]
@@ -160,13 +165,13 @@ sub configure {
       # allow_dirty = README.pod
       # changelog =
       # commit_msg = Release v%v
-      # push_to = origin
+      # push_to = origin master:master
       # push_to = origin build/master:build/master
       $self->config_short_merge('@Git', { 
          allow_dirty => [qw(dist.ini .travis.yml README.pod)],
          changelog   => '',
          commit_msg  => 'Release v%v',
-         push_to     => ['origin', 'origin build/master:build/master'],
+         push_to     => ['origin master:master', 'origin build/master:build/master'],
       }),
 
       # 
@@ -196,7 +201,7 @@ sub config_short_merge {
 
 42;
 
-
+__END__
 
 =pod
 
@@ -223,6 +228,7 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     ; File modifiers
     [OurPkgVersion]
     [PodWeaver]
+    config_plugin = @Author::BBYRD
  
     ; File pruners
     [PruneCruft]
@@ -309,7 +315,7 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     allow_dirty = README.pod
     changelog =
     commit_msg = Release v%v
-    push_to = origin
+    push_to = origin master:master
     push_to = origin build/master:build/master
  
     [GitHub::Update]
@@ -320,13 +326,6 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     [UploadToCPAN]
     [InstallRelease]
     [Clean]
- 
-    ; PodWeaver deps
-    ; authordep Pod::Weaver::Plugin::WikiDoc
-    ; authordep Pod::Weaver::Plugin::Encoding
-    ; authordep Pod::Weaver::Section::Availability
-    ; authordep Pod::Weaver::Section::Support
-    ; authordep Pod::Elemental::Transformer::List
  
     ; sanity deps
     ; authordep autovivification
@@ -413,10 +412,6 @@ Also, here's my C<<< profile.ini >>>, if you're interested:
  
     [GitHub::Create]
 
-=head1 TODO
-
-Create a L<Pod::Weaver> author bundle.
-
 =head1 AVAILABILITY
 
 The project homepage is L<https://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD/wiki>.
@@ -448,7 +443,7 @@ You can connect to the server at 'irc.perl.org' and join this channel: #distzill
 
 =head2 Bugs / Feature Requests
 
-Please report any bugs or feature requests via L<L<https://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD/issues>|GitHub>.
+Please report any bugs or feature requests via L<https://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD/issues>.
 
 =head1 AUTHOR
 
@@ -456,14 +451,10 @@ Brendan Byrd <BBYRD@CPAN.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2012 by Brendan Byrd.
+This software is Copyright (c) 2013 by Brendan Byrd.
 
 This is free software, licensed under:
 
   The Artistic License 2.0 (GPL Compatible)
 
 =cut
-
-
-__END__
-
