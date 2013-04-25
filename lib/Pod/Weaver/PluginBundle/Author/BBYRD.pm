@@ -88,7 +88,8 @@ sub mvp_bundle_config {
          repository_link    => 'none',
          bugs               => 'metadata',
          bugs_content       => 'Please report any bugs or feature requests via {WEB}.',
-         irc                => 'irc.perl.org, #distzilla, SineSwiper',  ### XXX: Should this grab from x_irc in dist.ini? ###
+         ### XXX: Use a DZIL stash to store the IRC channel? ###
+         irc                => 'irc.perl.org, SineSwiper',
       } ],
       
       # [Authors]

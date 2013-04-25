@@ -1,6 +1,17 @@
 Revision History for Dist-Zilla-PluginBundle-Author-BBYRD
 =========================================================
 
+v0.95 2013-04-25
+----------------
+
+commit 45fe424bc6403729e98a0796c48e59896fa222d6
+Author: Brendan Byrd <Perl@ResonatorSoft.org>
+Date:   Thu Apr 25 09:45:28 2013 -0400
+
+    Be more explicit with push master:master
+    Fix CommitBuild to not create random builds
+    Fix .travis.yml to run through deps faster
+
 v0.94 2013-04-22
 ----------------
 

@@ -154,6 +154,7 @@ sub configure {
       # release_branch = build/%b
       # release_message = Release build of v%v (on %b)
       $self->config_short_merge('Git::CommitBuild', { 
+         branch          => '',
          release_branch  => 'build/%b',
          release_message => 'Release build of v%v (on %b)',
       }),
@@ -306,6 +307,7 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
  
     [Git::CheckFor::CorrectBranch]
     [Git::CommitBuild]
+    branch = 
     release_branch = build/%b
     release_message = Release build of v%v (on %b)
  
