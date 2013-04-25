@@ -110,7 +110,7 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     allow_dirty = README.pod
     changelog =
     commit_msg = Release v%v
-    push_to = origin
+    push_to = origin master:master
     push_to = origin build/master:build/master
  
     [GitHub::Update]
@@ -206,10 +206,6 @@ Also, here's my C<<< profile.ini >>>, if you're interested:
     commit_message = Initial commit
  
     [GitHub::Create]
-
-=head1 TODO
-
-Create a L<Pod::Weaver> author bundle.
 
 =head1 AVAILABILITY
 

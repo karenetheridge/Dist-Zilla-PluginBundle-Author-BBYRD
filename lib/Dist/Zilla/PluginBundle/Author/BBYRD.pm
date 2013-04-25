@@ -154,6 +154,7 @@ sub configure {
       # release_branch = build/%b
       # release_message = Release build of v%v (on %b)
       $self->config_short_merge('Git::CommitBuild', { 
+         branch          => '',
          release_branch  => 'build/%b',
          release_message => 'Release build of v%v (on %b)',
       }),
@@ -165,13 +166,13 @@ sub configure {
       # allow_dirty = README.pod
       # changelog =
       # commit_msg = Release v%v
-      # push_to = origin
+      # push_to = origin master:master
       # push_to = origin build/master:build/master
       $self->config_short_merge('@Git', { 
          allow_dirty => [qw(dist.ini .travis.yml README.pod)],
          changelog   => '',
          commit_msg  => 'Release v%v',
-         push_to     => ['origin', 'origin build/master:build/master'],
+         push_to     => ['origin master:master', 'origin build/master:build/master'],
       }),
 
       # 
@@ -300,6 +301,7 @@ __END__
 
    [Git::CheckFor::CorrectBranch]
    [Git::CommitBuild]
+   branch = 
    release_branch = build/%b
    release_message = Release build of v%v (on %b)
 
@@ -309,7 +311,7 @@ __END__
    allow_dirty = README.pod
    changelog =
    commit_msg = Release v%v
-   push_to = origin
+   push_to = origin master:master
    push_to = origin build/master:build/master
 
    [GitHub::Update]
@@ -405,9 +407,5 @@ Also, here's my {profile.ini}, if you're interested:
    commit_message = Initial commit
 
    [GitHub::Create]
-
-= TODO
-
-Create a [Pod::Weaver] author bundle.
 
 =end wikidoc
