@@ -19,6 +19,11 @@ sub configure {
       # [MakeMaker]
       #
       qw( ReportPhase MakeMaker ),
+
+      # 
+      # [ModuleShareDirs]
+      # Dist::Zilla::MintingProfile::Author::BBYRD = profiles
+      $self->config_short_merge('ModuleShareDirs', { 'Dist::Zilla::MintingProfile::Author::BBYRD' => 'profiles' }),
       
       # [Git::NextVersion]
       # first_version = 0.90
@@ -218,6 +223,9 @@ __END__
 
    ; Makefile.PL maker
    [MakeMaker]
+   
+   [ModuleShareDirs]
+   Dist::Zilla::MintingProfile::Author::BBYRD = profiles
 
    [Git::NextVersion]
    first_version = 0.90
