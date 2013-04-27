@@ -14,6 +14,7 @@ use Pod::Weaver::Plugin::Encoding ();
 use Pod::Weaver::Section::Availability ();
 use Pod::Elemental::Transformer::List 0.101620 ();
 use Pod::Weaver::Section::Support 1.001        ();
+use Pod::Weaver::Section::Contributors ();
  
 sub _exp { Pod::Weaver::Config::Assembler->expand_package( $_[0] ) }
 
