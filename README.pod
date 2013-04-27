@@ -33,8 +33,9 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     [ManifestSkip]
     [Manifest]
     [License]
-    [ReadmeAnyFromPod / ReadmeHtmlInBuild]
-    [ReadmeAnyFromPod / ReadmePodInBuild]
+    [ReadmeAnyFromPod / ReadmePodInRoot]    ; Pod README for Root (for GitHub, etc.)
+    [ReadmeAnyFromPod / ReadmeTextInBuild]  ; Text README for Build
+    [ReadmeAnyFromPod / ReadmeHTMLInBuild]  ; HTML README for Build (never POD, so it doesn't get installed)
     [InstallGuide]
     [ExecDir]
  
@@ -63,7 +64,6 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     [ReportVersions::Tiny]
     [Test::CheckManifest]
     [Test::DistManifest]
-    [Test::UseAllModules]
     [Test::Version]
  
     ; Prereqs
@@ -90,10 +90,12 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     x_irc          = irc://irc.perl.org/#distzilla
     bugtracker.web = https://github.com/%a/%r/issues
  
+    [ContributorsFromGit]
+ 
     ; Post-build plugins
     [CopyFilesFromBuild]
     move = .gitignore
-    copy = README.pod
+    move = README.pod
  
     ; Post-build Git plugins
     [TravisYML]
@@ -101,6 +103,7 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
  
     [Git::CheckFor::CorrectBranch]
     [Git::CommitBuild]
+    branch = 
     release_branch = build/%b
     release_message = Release build of v%v (on %b)
  
@@ -232,7 +235,7 @@ those networks/channels and get help:
 
 irc.perl.org
 
-You can connect to the server at 'irc.perl.org' and join this channel: #distzilla then talk to this person for help: SineSwiper.
+You can connect to the server at 'irc.perl.org' and talk to this person for help: SineSwiper.
 
 =back
 

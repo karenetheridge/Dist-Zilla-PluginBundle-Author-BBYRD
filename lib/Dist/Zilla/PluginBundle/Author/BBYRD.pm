@@ -47,10 +47,12 @@ sub configure {
       qw( PruneCruft GitFmtChanges ManifestSkip Manifest License ),
    );
    $self->add_plugins(
-      # [ReadmeAnyFromPod / ReadmeHtmlInBuild]
-      # [ReadmeAnyFromPod / ReadmePodInBuild]
-      [ReadmeAnyFromPod => ReadmeHtmlInBuild => {}],
-      [ReadmeAnyFromPod => ReadmePodInBuild  => {}],
+      # [ReadmeAnyFromPod / ReadmePodInRoot]    ; Pod README for Root (for GitHub, etc.)
+      # [ReadmeAnyFromPod / ReadmeTextInBuild]  ; Text README for Build
+      # [ReadmeAnyFromPod / ReadmeHTMLInBuild]  ; HTML README for Build (never POD, so it doesn't get installed)
+      [ReadmeAnyFromPod => ReadmePodInRoot   => {}],
+      [ReadmeAnyFromPod => ReadmeTextInBuild => {}],
+      [ReadmeAnyFromPod => ReadmeHTMLInBuild => {}],
    );
    $self->add_merged(
       # [InstallGuide]
@@ -85,9 +87,8 @@ sub configure {
       # [ReportVersions::Tiny]
       # [Test::CheckManifest]
       # [Test::DistManifest]
-      # [Test::UseAllModules]
       # [Test::Version]
-      (map { 'Test::'.$_ } qw(CPAN::Meta::JSON CheckDeps Portability Synopsis MinimumVersion CheckManifest DistManifest UseAllModules Version)),
+      (map { 'Test::'.$_ } qw(CPAN::Meta::JSON CheckDeps Portability Synopsis MinimumVersion CheckManifest DistManifest Version)),
       'ReportVersions::Tiny',
 
       # 
@@ -130,14 +131,17 @@ sub configure {
       }],
    );
    $self->add_merged(
+      #
+      # [ContributorsFromGit]
+      'ContributorsFromGit',
+      
       # 
       # ; Post-build plugins
       # [CopyFilesFromBuild]
       # move = .gitignore
-      # copy = README.pod
+      # move = README.pod
       $self->config_short_merge('CopyFilesFromBuild', { 
-         move => ['.gitignore'],
-         copy => ['README.pod'],
+         move => [qw(.gitignore README.pod)],
       }),
 
       # 
@@ -233,8 +237,9 @@ __END__
    [ManifestSkip]
    [Manifest]
    [License]
-   [ReadmeAnyFromPod / ReadmeHtmlInBuild]
-   [ReadmeAnyFromPod / ReadmePodInBuild]
+   [ReadmeAnyFromPod / ReadmePodInRoot]    ; Pod README for Root (for GitHub, etc.)
+   [ReadmeAnyFromPod / ReadmeTextInBuild]  ; Text README for Build
+   [ReadmeAnyFromPod / ReadmeHTMLInBuild]  ; HTML README for Build (never POD, so it doesn't get installed)
    [InstallGuide]
    [ExecDir]
 
@@ -263,7 +268,6 @@ __END__
    [ReportVersions::Tiny]
    [Test::CheckManifest]
    [Test::DistManifest]
-   [Test::UseAllModules]
    [Test::Version]
 
    ; Prereqs
@@ -290,10 +294,12 @@ __END__
    x_irc          = irc://irc.perl.org/#distzilla
    bugtracker.web = https://github.com/%a/%r/issues
 
+   [ContributorsFromGit]
+   
    ; Post-build plugins
    [CopyFilesFromBuild]
    move = .gitignore
-   copy = README.pod
+   move = README.pod
 
    ; Post-build Git plugins
    [TravisYML]
