@@ -8,8 +8,12 @@ Makefile.PL
 README.html
 README.pod
 dist.ini
+lib/Dist/Zilla/MintingProfile/Author/BBYRD.pm
 lib/Dist/Zilla/PluginBundle/Author/BBYRD.pm
 lib/Pod/Weaver/PluginBundle/Author/BBYRD.pm
+profiles/default/Module.pm
+profiles/default/plugins.ini
+profiles/default/profile.ini
 t/00-check-deps.t
 t/00-compile.t
 t/00-load.t

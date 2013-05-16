@@ -15,6 +15,9 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     ; Makefile.PL maker
     [MakeMaker]
  
+    [ModuleShareDirs]
+    Dist::Zilla::MintingProfile::Author::BBYRD = profiles
+ 
     [Git::NextVersion]
     first_version = 0.90
  
@@ -33,8 +36,9 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     [ManifestSkip]
     [Manifest]
     [License]
-    [ReadmeAnyFromPod / ReadmeHtmlInBuild]
-    [ReadmeAnyFromPod / ReadmePodInBuild]
+    [ReadmeAnyFromPod / ReadmePodInRoot]    ; Pod README for Root (for GitHub, etc.)
+    [ReadmeAnyFromPod / ReadmeTextInBuild]  ; Text README for Build
+    [ReadmeAnyFromPod / ReadmeHTMLInBuild]  ; HTML README for Build (never POD, so it doesn't get installed)
     [InstallGuide]
     [ExecDir]
  
@@ -63,7 +67,6 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     [ReportVersions::Tiny]
     [Test::CheckManifest]
     [Test::DistManifest]
-    [Test::UseAllModules]
     [Test::Version]
  
     ; Prereqs
@@ -90,10 +93,12 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     x_irc          = irc://irc.perl.org/#distzilla
     bugtracker.web = https://github.com/%a/%r/issues
  
+    [ContributorsFromGit]
+ 
     ; Post-build plugins
     [CopyFilesFromBuild]
     move = .gitignore
-    copy = README.pod
+    move = README.pod
  
     ; Post-build Git plugins
     [TravisYML]
