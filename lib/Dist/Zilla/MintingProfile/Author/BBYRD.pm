@@ -55,6 +55,10 @@ site near you, or see L<https://metacpan.org/module/Dist::Zilla::PluginBundle::A
 
 Brendan Byrd <BBYRD@CPAN.org>
 
+=head1 CONTRIBUTOR
+
+Brendan Byrd <Perl@ResonatorSoft.org>
+
 =head1 COPYRIGHT AND LICENSE
 
 This software is Copyright (c) 2013 by Brendan Byrd.

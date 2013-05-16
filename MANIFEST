@@ -5,8 +5,8 @@ MANIFEST
 META.json
 META.yml
 Makefile.PL
+README
 README.html
-README.pod
 dist.ini
 lib/Dist/Zilla/MintingProfile/Author/BBYRD.pm
 lib/Dist/Zilla/PluginBundle/Author/BBYRD.pm
@@ -16,7 +16,6 @@ profiles/default/plugins.ini
 profiles/default/profile.ini
 t/00-check-deps.t
 t/00-compile.t
-t/00-load.t
 t/000-report-versions-tiny.t
 xt/author/test-eol.t
 xt/release/check-manifest.t
