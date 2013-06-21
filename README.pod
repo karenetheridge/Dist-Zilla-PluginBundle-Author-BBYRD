@@ -102,7 +102,8 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
  
     ; Post-build Git plugins
     [TravisYML]
-    test_min_deps = 1
+    ; keep sanity from balking at these
+    pre_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
  
     [Git::CheckFor::CorrectBranch]
     [Git::CommitBuild]
