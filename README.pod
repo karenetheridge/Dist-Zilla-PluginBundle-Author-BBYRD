@@ -60,7 +60,7 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     [Test::CPAN::Meta::JSON]
     [Test::CheckDeps]
     [Test::Portability]
-    ;[Test::Pod::LinkCheck]  ; Both of these are borked...  
+    ;[Test::Pod::LinkCheck]  ; Both of these are borked...
     ;[Test::Pod::No404s]     ; ...I really need to create my own
     [Test::Synopsis]
     [Test::MinimumVersion]
@@ -104,10 +104,12 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     [TravisYML]
     ; keep sanity from balking at these
     pre_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
+    ; don't test Perl 5.8
+    perl_version = 5.19 5.18 5.16 5.14 5.12 5.10
  
     [Git::CheckFor::CorrectBranch]
     [Git::CommitBuild]
-    branch = 
+    branch =
     release_branch = build/%b
     release_message = Release build of v%v (on %b)
  
@@ -143,7 +145,7 @@ bind them to.
 =head1 NAMING SCHEME
 
 I'm a strong believer in structured order in the chaos that is the CPAN
-namespace.  There's enough cruft in CPAN, with all of the forked modules, 
+namespace.  There's enough cruft in CPAN, with all of the forked modules,
 legacy stuff that should have been removed 10 years ago, and confusion over
 which modules are available vs. which ones actually work.  (Which all stem
 from the same base problem, so I'm almost repeating myself...)
