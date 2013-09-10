@@ -15,9 +15,6 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     ; Makefile.PL maker
     [MakeMaker]
  
-    [ModuleShareDirs]
-    Dist::Zilla::MintingProfile::Author::BBYRD = profiles
- 
     [Git::NextVersion]
     first_version = 0.90
  
@@ -102,6 +99,7 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
  
     ; Post-build Git plugins
     [TravisYML]
+    notify_irc = irc://irc.perl.org/#sanity
     ; keep sanity from balking at these
     pre_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
     ; don't test Perl 5.8
@@ -216,7 +214,7 @@ Brendan Byrd <BBYRD@CPAN.org>
 
 =head1 CONTRIBUTOR
 
-Brendan Byrd <Perl@ResonatorSoft.org>
+Brendan Byrd <bbyrd@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

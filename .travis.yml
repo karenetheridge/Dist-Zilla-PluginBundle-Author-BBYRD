@@ -17,3 +17,12 @@ install:
    - "dzil listdeps   | grep -vP '[^\\w:]' | cpanm --verbose --skip-satisfied"
 script:
    - dzil smoke --release --author
+notifications:
+   irc:
+      channels:
+         - irc.perl.org#sanity
+      on_failure: always
+      on_success: change
+      template:
+         - '%{branch}#%{build_number} by %{author}: %{message} (%{build_url})'
+      use_notice: true
