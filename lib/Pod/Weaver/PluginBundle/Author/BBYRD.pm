@@ -10,7 +10,6 @@ use Pod::Weaver::Config::Assembler;
  
 # Dependencies
 use Pod::Weaver::Plugin::WikiDoc ();
-use Pod::Weaver::Plugin::Encoding ();
 use Pod::Weaver::Section::Availability ();
 use Pod::Elemental::Transformer::List 0.101620 ();
 use Pod::Weaver::Section::Support 1.001        ();
@@ -22,16 +21,16 @@ sub _exp { Pod::Weaver::Config::Assembler->expand_package( $_[0] ) }
 sub mvp_bundle_config {
    my @plugins;
    push @plugins, (
-      # [-Encoding]
+      # [-SingleEncoding]
       # [-WikiDoc]
       # [@CorePrep]
       #  
       # [Name]
 
-      [ '@Author::BBYRD/Encoding', _exp('-Encoding'), {} ],
-      [ '@Author::BBYRD/WikiDoc',  _exp('-WikiDoc'),  {} ],
-      [ '@Author::BBYRD/CorePrep', _exp('@CorePrep'), {} ],
-      [ '@Author::BBYRD/Name',     _exp('Name'),      {} ],
+      [ '@Author::BBYRD/SingleEncoding', _exp('-SingleEncoding'), {} ],
+      [ '@Author::BBYRD/WikiDoc',        _exp('-WikiDoc'),        {} ],
+      [ '@Author::BBYRD/CorePrep',       _exp('@CorePrep'),       {} ],
+      [ '@Author::BBYRD/Name',           _exp('Name'),            {} ],
  
       # [Region / prelude]
       #  
@@ -119,7 +118,7 @@ __END__
  
    ; Very similar to...
    
-   [-Encoding]
+   [-SingleEncoding]
    [-WikiDoc]
    [@CorePrep]
     
@@ -162,7 +161,6 @@ __END__
 
    ; PodWeaver deps
    ; authordep Pod::Weaver::Plugin::WikiDoc
-   ; authordep Pod::Weaver::Plugin::Encoding
    ; authordep Pod::Weaver::Section::Availability
    ; authordep Pod::Weaver::Section::Support
    ; authordep Pod::Elemental::Transformer::List
