@@ -8,7 +8,7 @@ use Moose;
 
 with 'Dist::Zilla::Role::PluginBundle::Merged' => {
    mv_plugins => [ qw(
-      Git::GatherDir OurPkgVersion PodWeaver Test::ReportPrereqs Test::Compile
+      Git::GatherDir OurPkgVersion PodWeaver Test::ReportPrereqs Test::Compile NoTabsTests
       PruneCruft @Prereqs CheckPrereqsIndexed MetaNoIndex CopyFilesFromBuild
       Git::CheckFor::CorrectBranch @Git TravisYML
    ) ],
@@ -46,10 +46,16 @@ sub configure {
       #
       # ; Extra file creation
       # [GitFmtChanges]
+      # log_format = [%h]%n* Author: %an <%ae>%n* Date:   %ai (%ar)%n%n%B
+      #
+      $self->config_short_merge('GitFmtChanges', {
+         log_format => '[%h]%n* Author: %an <%ae>%n* Date:   %ai (%ar)%n%n%B',
+      }),
+
       # [ManifestSkip]
       # [Manifest]
       # [License]
-      qw( PruneCruft GitFmtChanges ManifestSkip Manifest License ),
+      qw( PruneCruft ManifestSkip Manifest License ),
 
       # [ReadmeAnyFromPod / ReadmePodInRoot]    ; Pod README for Root (for GitHub, etc.)
       # [ReadmeAnyFromPod / ReadmeTextInBuild]  ; Text README for Build
@@ -81,6 +87,9 @@ sub configure {
       $self->config_short_merge('Test::EOL', { trailing_whitespace => 0 }),
 
       #
+      # [Test::CPAN::Changes]
+      $self->config_short_merge('Test::CPAN::Changes', { changelog => 'CHANGES' }),
+
       # [Test::CPAN::Meta::JSON]
       # [Test::CheckDeps]
       # [Test::Portability]
@@ -123,12 +132,12 @@ sub configure {
       $self->config_short_merge('MetaProvides::Package', { meta_noindex => 1 }),
 
       #
-      # [MetaResourcesFromGit]
-      # x_irc          = irc://irc.perl.org/#distzilla
-      # bugtracker.web = https://github.com/%a/%r/issues
-      [MetaResourcesFromGit => {
-         x_irc            => (exists $self->payload->{x_irc} ? $self->payload->{x_irc} : 'irc://irc.perl.org/#distzilla'),
-         'bugtracker.web' => 'https://github.com/%a/%r/issues',
+      # [GithubMeta]
+      # issues = 1
+      # user   = SineSwiper
+      [GithubMeta => {
+         issues => 1,
+         user   => 'SineSwiper',
       }],
 
       #
@@ -232,6 +241,8 @@ __END__
 
    ; Extra file creation
    [GitFmtChanges]
+   log_format = [%h]%n* Author: %an <%ae>%n* Date:   %ai (%ar)%n%n%B
+
    [ManifestSkip]
    [Manifest]
    [License]
@@ -288,9 +299,9 @@ __END__
    [MetaProvides::Package]
    meta_noindex = 1        ; respect prior no_index directives
 
-   [MetaResourcesFromGit]
-   x_irc          = irc://irc.perl.org/#distzilla
-   bugtracker.web = https://github.com/%a/%r/issues
+   [GithubMeta]
+   issues = 1
+   user   = SineSwiper
 
    [ContributorsFromGit]
 
