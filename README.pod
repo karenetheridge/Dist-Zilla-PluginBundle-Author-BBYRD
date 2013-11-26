@@ -1,6 +1,6 @@
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
 =head1 NAME
 
@@ -88,9 +88,9 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     [MetaProvides::Package]
     meta_noindex = 1        ; respect prior no_index directives
  
-    [MetaResourcesFromGit]
-    x_irc          = irc://irc.perl.org/#distzilla
-    bugtracker.web = https://github.com/%a/%r/issues
+    [GithubMeta]
+    issues = 1
+    user   = SineSwiper
  
     [ContributorsFromGit]
  
@@ -179,7 +179,7 @@ in your own C<<< dist.ini >>> andE<sol>or Author bundle.
 
 =head1 AVAILABILITY
 
-The project homepage is L<https://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD/wiki>.
+The project homepage is L<https://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD>.
 
 The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
@@ -213,6 +213,10 @@ Please report any bugs or feature requests via L<https://github.com/SineSwiper/D
 =head1 AUTHOR
 
 Brendan Byrd <BBYRD@CPAN.org>
+
+=head1 CONTRIBUTOR
+
+Sergey Romanov <complefor@rambler.ru>
 
 =head1 COPYRIGHT AND LICENSE
 
