@@ -52,7 +52,6 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     ; Other xt/* tests
     [RunExtraTests]
     ;[MetaTests]  ; until Test::CPAN::Meta supports 2.0
-    [NoTabsTests]
     [Test::EOL]
     trailing_whitespace = 0
  
@@ -67,6 +66,7 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     [Test::CheckManifest]
     [Test::DistManifest]
     [Test::Version]
+    [Test::NoTabs]
  
     ; Prereqs
     [@Prereqs]
@@ -103,9 +103,7 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     [TravisYML]
     notify_irc = irc://irc.perl.org/#sanity
     ; keep sanity from balking at these
-    pre_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
-    ; don't test Perl 5.8
-    perl_version = 5.19 5.18 5.16 5.14 5.12 5.10
+    post_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
  
     [Git::CheckFor::CorrectBranch]
     [Git::CommitBuild]
@@ -220,9 +218,10 @@ Sergey Romanov <complefor@rambler.ru>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2013 by Brendan Byrd.
+This software is Copyright (c) 2014 by Brendan Byrd.
 
 This is free software, licensed under:
 
   The Artistic License 2.0 (GPL Compatible)
 
+=cut
