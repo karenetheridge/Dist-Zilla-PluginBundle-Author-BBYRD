@@ -8,7 +8,7 @@ use Moose;
 
 with 'Dist::Zilla::Role::PluginBundle::Merged' => {
    mv_plugins => [ qw(
-      Git::GatherDir OurPkgVersion PodWeaver Test::ReportPrereqs Test::Compile NoTabsTests
+      Git::GatherDir OurPkgVersion PodWeaver Test::ReportPrereqs Test::Compile Test::NoTabs
       PruneCruft @Prereqs CheckPrereqsIndexed MetaNoIndex CopyFilesFromBuild
       Git::CheckFor::CorrectBranch @Git TravisYML
    ) ],
@@ -79,8 +79,7 @@ sub configure {
       # ; Other xt/* tests
       # [RunExtraTests]
       # ;[MetaTests]  ; until Test::CPAN::Meta supports 2.0
-      # [NoTabsTests]
-      qw( InstallGuide ExecDir Test::Compile PodCoverageTests PodSyntaxTests RunExtraTests NoTabsTests ),
+      qw( InstallGuide ExecDir Test::Compile PodCoverageTests PodSyntaxTests RunExtraTests ),
 
       # [Test::EOL]
       # trailing_whitespace = 0
@@ -101,7 +100,8 @@ sub configure {
       # [Test::CheckManifest]
       # [Test::DistManifest]
       # [Test::Version]
-      (map { 'Test::'.$_ } qw(CPAN::Meta::JSON CheckDeps Portability Synopsis MinimumVersion ReportPrereqs CheckManifest DistManifest Version)),
+      # [Test::NoTabs]
+      (map { 'Test::'.$_ } qw(CPAN::Meta::JSON CheckDeps Portability Synopsis MinimumVersion ReportPrereqs CheckManifest DistManifest Version NoTabs)),
 
       #
       # ; Prereqs
@@ -158,13 +158,10 @@ sub configure {
       # [TravisYML]
       # notify_irc = irc://irc.perl.org/#sanity
       # ; keep sanity from balking at these
-      # pre_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
-      # ; don't test Perl 5.8
-      # perl_version = 5.19 5.18 5.16 5.14 5.12 5.10
+      # post_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
       $self->config_short_merge('TravisYML', {
          notify_irc => 'irc://irc.perl.org/#sanity',
-         pre_before_install_build => 'cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional',
-         perl_version => '5.19 5.18 5.16 5.14 5.12 5.10',
+         post_before_install_build => 'cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional',
       }),
 
       #
@@ -263,7 +260,6 @@ __END__
    ; Other xt/* tests
    [RunExtraTests]
    ;[MetaTests]  ; until Test::CPAN::Meta supports 2.0
-   [NoTabsTests]
    [Test::EOL]
    trailing_whitespace = 0
 
@@ -278,6 +274,7 @@ __END__
    [Test::CheckManifest]
    [Test::DistManifest]
    [Test::Version]
+   [Test::NoTabs]
 
    ; Prereqs
    [@Prereqs]
@@ -314,9 +311,7 @@ __END__
    [TravisYML]
    notify_irc = irc://irc.perl.org/#sanity
    ; keep sanity from balking at these
-   pre_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
-   ; don't test Perl 5.8
-   perl_version = 5.19 5.18 5.16 5.14 5.12 5.10
+   post_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
 
    [Git::CheckFor::CorrectBranch]
    [Git::CommitBuild]
