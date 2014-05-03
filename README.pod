@@ -15,6 +15,10 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     ; Makefile.PL maker
     [MakeMaker]
  
+    [Authority]
+    authority = cpan:BBYRD
+    locate_comment = 1
+ 
     [Git::NextVersion]
     first_version = 0.90
  
@@ -41,12 +45,16 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     [InstallGuide]
     [ExecDir]
  
-    ; t/* tests
-    [Test::Compile]
+    ; Many tests
+    [@TestingMania]
+    disable = Test::Perl::Critic
+    disable = Test::EOL
+    disable = Test::Kwalitee
+    disable = Test::Pod::LinkCheck
+    disable = MetaTests
+    changelog = CHANGES
  
     ; POD tests
-    [PodCoverageTests]
-    [PodSyntaxTests]
     ;[Test::PodSpelling]  ; Win32 install problems
  
     ; Other xt/* tests
@@ -55,18 +63,11 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     [Test::EOL]
     trailing_whitespace = 0
  
-    [Test::CPAN::Meta::JSON]
     [Test::CheckDeps]
-    [Test::Portability]
     ;[Test::Pod::LinkCheck]  ; Both of these are borked...
     ;[Test::Pod::No404s]     ; ...I really need to create my own
-    [Test::Synopsis]
-    [Test::MinimumVersion]
     [Test::ReportPrereqs]
     [Test::CheckManifest]
-    [Test::DistManifest]
-    [Test::Version]
-    [Test::NoTabs]
  
     ; Prereqs
     [@Prereqs]
@@ -101,7 +102,10 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
  
     ; Post-build Git plugins
     [TravisYML]
+    notify_email = 0
     notify_irc = irc://irc.perl.org/#sanity
+    ; used for Travis::TestRelease
+    support_builddir = 1
     ; keep sanity from balking at these
     post_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
  
@@ -124,6 +128,9 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     metacpan = 1
  
     [TestRelease]
+    [Travis::TestRelease]
+    create_builddir = 1
+ 
     [ConfirmRelease]
     [UploadToCPAN]
     [InstallRelease]
