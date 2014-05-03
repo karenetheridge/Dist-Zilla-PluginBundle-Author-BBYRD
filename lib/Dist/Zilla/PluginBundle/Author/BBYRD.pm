@@ -8,7 +8,7 @@ use Moose;
 
 with 'Dist::Zilla::Role::PluginBundle::Merged' => {
    mv_plugins => [ qw(
-      Git::GatherDir OurPkgVersion PodWeaver Test::ReportPrereqs Test::Compile Test::NoTabs
+      Git::GatherDir OurPkgVersion PodWeaver Test::ReportPrereqs @TestingMania
       PruneCruft @Prereqs CheckPrereqsIndexed MetaNoIndex CopyFilesFromBuild
       Git::CheckFor::CorrectBranch @Git TravisYML
    ) ],
@@ -67,41 +67,44 @@ sub configure {
       #
       # [InstallGuide]
       # [ExecDir]
+      qw( InstallGuide ExecDir ),
+
       #
-      # ; t/* tests
-      # [Test::Compile]
+      # ; Many tests
+      # [@TestingMania]
+      # disable = Test::Perl::Critic
+      # disable = Test::EOL
+      # disable = Test::Kwalitee
+      # disable = Test::Pod::LinkCheck
+      # disable = MetaTests
+      # changelog = CHANGES
+      $self->config_short_merge('@TestingMania' => {
+         disable => [
+            (map { 'Test::'.$_ } qw( Perl::Critic EOL Kwalitee Pod::LinkCheck )),
+            qw( MetaTests ),
+         ],
+         changelog => 'CHANGES'
+      }),
+
       #
       # ; POD tests
-      # [PodCoverageTests]
-      # [PodSyntaxTests]
       # ;[Test::PodSpelling]  ; Win32 install problems
       #
       # ; Other xt/* tests
       # [RunExtraTests]
       # ;[MetaTests]  ; until Test::CPAN::Meta supports 2.0
-      qw( InstallGuide ExecDir Test::Compile PodCoverageTests PodSyntaxTests RunExtraTests ),
+      qw( RunExtraTests ),
 
       # [Test::EOL]
       # trailing_whitespace = 0
       $self->config_short_merge('Test::EOL', { trailing_whitespace => 0 }),
 
-      #
-      # [Test::CPAN::Changes]
-      $self->config_short_merge('Test::CPAN::Changes', { changelog => 'CHANGES' }),
-
-      # [Test::CPAN::Meta::JSON]
       # [Test::CheckDeps]
-      # [Test::Portability]
       # ;[Test::Pod::LinkCheck]  ; Both of these are borked...
       # ;[Test::Pod::No404s]     ; ...I really need to create my own
-      # [Test::Synopsis]
-      # [Test::MinimumVersion]
       # [Test::ReportPrereqs]
       # [Test::CheckManifest]
-      # [Test::DistManifest]
-      # [Test::Version]
-      # [Test::NoTabs]
-      (map { 'Test::'.$_ } qw(CPAN::Meta::JSON CheckDeps Portability Synopsis MinimumVersion ReportPrereqs CheckManifest DistManifest Version NoTabs)),
+      (map { 'Test::'.$_ } qw(CheckDeps ReportPrereqs CheckManifest)),
 
       #
       # ; Prereqs
@@ -156,11 +159,16 @@ sub configure {
       #
       # ; Post-build Git plugins
       # [TravisYML]
+      # notify_email = 0
       # notify_irc = irc://irc.perl.org/#sanity
+      # ; used for Travis::TestRelease
+      # support_builddir = 1
       # ; keep sanity from balking at these
       # post_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
       $self->config_short_merge('TravisYML', {
-         notify_irc => 'irc://irc.perl.org/#sanity',
+         notify_email     => 0,
+         notify_irc       => 'irc://irc.perl.org/#sanity',
+         support_builddir => 1,
          post_before_install_build => 'cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional',
       }),
 
@@ -169,6 +177,7 @@ sub configure {
       'Git::CheckFor::CorrectBranch',
 
       # [Git::CommitBuild]
+      # branch =
       # release_branch = build/%b
       # release_message = Release build of v%v (on %b)
       $self->config_short_merge('Git::CommitBuild', {
@@ -200,11 +209,17 @@ sub configure {
 
       #
       # [TestRelease]
+      'TestRelease',
+
+      # [Travis::TestRelease]
+      # create_builddir = 1
+      $self->config_short_merge('Travis::TestRelease', { create_builddir => 1 }),
+
       # [ConfirmRelease]
       # [UploadToCPAN]
       # [InstallRelease]
       # [Clean]
-      qw( TestRelease ConfirmRelease UploadToCPAN InstallRelease Clean ),
+      qw( ConfirmRelease UploadToCPAN InstallRelease Clean ),
    );
 }
 
@@ -249,12 +264,16 @@ __END__
    [InstallGuide]
    [ExecDir]
 
-   ; t/* tests
-   [Test::Compile]
+   ; Many tests
+   [@TestingMania]
+   disable = Test::Perl::Critic
+   disable = Test::EOL
+   disable = Test::Kwalitee
+   disable = Test::Pod::LinkCheck
+   disable = MetaTests
+   changelog = CHANGES
 
    ; POD tests
-   [PodCoverageTests]
-   [PodSyntaxTests]
    ;[Test::PodSpelling]  ; Win32 install problems
 
    ; Other xt/* tests
@@ -263,18 +282,11 @@ __END__
    [Test::EOL]
    trailing_whitespace = 0
 
-   [Test::CPAN::Meta::JSON]
    [Test::CheckDeps]
-   [Test::Portability]
    ;[Test::Pod::LinkCheck]  ; Both of these are borked...
    ;[Test::Pod::No404s]     ; ...I really need to create my own
-   [Test::Synopsis]
-   [Test::MinimumVersion]
    [Test::ReportPrereqs]
    [Test::CheckManifest]
-   [Test::DistManifest]
-   [Test::Version]
-   [Test::NoTabs]
 
    ; Prereqs
    [@Prereqs]
@@ -309,7 +321,10 @@ __END__
 
    ; Post-build Git plugins
    [TravisYML]
+   notify_email = 0
    notify_irc = irc://irc.perl.org/#sanity
+   ; used for Travis::TestRelease
+   support_builddir = 1
    ; keep sanity from balking at these
    post_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
 
@@ -332,6 +347,9 @@ __END__
    metacpan = 1
 
    [TestRelease]
+   [Travis::TestRelease]
+   create_builddir = 1
+
    [ConfirmRelease]
    [UploadToCPAN]
    [InstallRelease]
