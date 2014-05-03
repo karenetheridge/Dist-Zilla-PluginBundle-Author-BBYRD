@@ -223,7 +223,10 @@ sub configure {
 
       # [Travis::TestRelease]
       # create_builddir = 1
-      $self->config_short_merge('Travis::TestRelease', { create_builddir => 1 }),
+      $self->config_short_merge('Travis::TestRelease', {
+         create_builddir => 1,
+         open_status_url => 1,
+      }),
 
       # [ConfirmRelease]
       # [UploadToCPAN]
