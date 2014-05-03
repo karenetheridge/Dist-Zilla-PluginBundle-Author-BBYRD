@@ -1,5 +1,6 @@
 package Dist::Zilla::PluginBundle::Author::BBYRD;
 
+# AUTHORITY
 # VERSION
 # ABSTRACT: DZIL Author Bundle for BBYRD
 
@@ -24,6 +25,14 @@ sub configure {
       # [MakeMaker]
       #
       qw( ReportPhase MakeMaker ),
+
+      # [Authority]
+      # authority = cpan:BBYRD
+      # locate_comment = 1
+      [Authority => {
+         authority      => 'cpan:BBYRD',
+         locate_comment => 1,
+      }],
 
       # [Git::NextVersion]
       # first_version = 0.90
@@ -237,6 +246,10 @@ __END__
 
    ; Makefile.PL maker
    [MakeMaker]
+
+   [Authority]
+   authority = cpan:BBYRD
+   locate_comment = 1
 
    [Git::NextVersion]
    first_version = 0.90

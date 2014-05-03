@@ -1,11 +1,12 @@
 package Dist::Zilla::MintingProfile::Author::BBYRD;
 
+# AUTHORITY
 # VERSION
 # ABSTRACT: DZIL MintingProfile for BBYRD
 
 use sanity;
 use Moose;
-with 'Dist::Zilla::Role::MintingProfile::ShareDir'; 
+with 'Dist::Zilla::Role::MintingProfile::ShareDir';
 
 __PACKAGE__->meta->make_immutable;
 42;
@@ -15,17 +16,17 @@ __END__
 =begin wikidoc
 
 = SYNOPSIS
- 
+
    dzil new -P Author::BBYRD [distro_name]
- 
+
 = DESCRIPTION
- 
+
 This is a personalized Author minting profile for DZIL.
 
 = NAMING SCHEME
 
 I'm a strong believer in structured order in the chaos that is the CPAN
-namespace.  There's enough cruft in CPAN, with all of the forked modules, 
+namespace.  There's enough cruft in CPAN, with all of the forked modules,
 legacy stuff that should have been removed 10 years ago, and confusion over
 which modules are available vs. which ones actually work.  (Which all stem
 from the same base problem, so I'm almost repeating myself...)
