@@ -15,6 +15,7 @@ with 'Dist::Zilla::Role::PluginBundle::Merged' => {
    ) ],
 };
 with 'Dist::Zilla::Role::PluginBundle::PluginRemover';
+with 'Dist::Zilla::Role::BundleDeps';
 
 sub configure {
    my $self = shift;
