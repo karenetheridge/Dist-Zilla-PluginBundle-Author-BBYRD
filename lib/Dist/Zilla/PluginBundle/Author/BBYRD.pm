@@ -156,7 +156,21 @@ sub configure {
       #
       # [ContributorsFromGit]
       'ContributorsFromGit',
+   );
 
+   # Handle $resources->{x_IRC}
+   my $x_IRC = $self->payload->{x_IRC} || $self->payload->{x_irc};
+   $self->add_merged(
+      #
+      # [MetaResources]  ; only loaded if needed
+      # x_IRC = $x_IRC
+
+      [MetaResources => {
+         x_IRC => $x_IRC,
+      }],
+   ) if $x_IRC;
+
+   $self->add_merged(
       #
       # ; Post-build plugins
       # [CopyFilesFromBuild]
@@ -331,6 +345,9 @@ __END__
 
    [ContributorsFromGit]
 
+   [MetaResources]  ; only loaded if needed
+   x_IRC = $x_IRC
+
    ; Post-build plugins
    [CopyFilesFromBuild]
    move = .gitignore
@@ -407,7 +424,7 @@ I'll throw these into {config_rename}.)
 
 If this is a problem, you might want to consider using [@Filter|Dist::Zilla::PluginBundle::Filter].
 
-One exception is {x_irc}, which is detected and passed to [MetaResourcesFromGit|Dist::Zilla::Plugin::MetaResourcesFromGit]
+One exception is {x_IRC}, which is detected and passed to [MetaResources|Dist::Zilla::Plugin::MetaResources]
 properly.
 
 = SEE ALSO
