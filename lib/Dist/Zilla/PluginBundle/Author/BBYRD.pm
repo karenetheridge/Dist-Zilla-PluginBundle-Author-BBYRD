@@ -4,8 +4,9 @@ package Dist::Zilla::PluginBundle::Author::BBYRD;
 # VERSION
 # ABSTRACT: DZIL Author Bundle for BBYRD
 
-use sanity;
 use Moose;
+
+use sanity;
 
 with 'Dist::Zilla::Role::PluginBundle::Merged' => {
    mv_plugins => [ qw(
@@ -55,13 +56,15 @@ sub configure {
       # [PruneCruft]
       #
       # ; Extra file creation
-      # [GitFmtChanges]
-      # log_format = [%h]%n* Author: %an <%ae>%n* Date:   %ai (%ar)%n%n%B
-      #
-      $self->config_short_merge('GitFmtChanges', {
-         log_format => '[%h]%n* Author: %an <%ae>%n* Date:   %ai (%ar)%n%n%B',
+      # [ChangelogFromGit::CPAN::Changes]
+      # file_name = CHANGES
+      # copy_to_root = 0
+      $self->config_short_merge('ChangelogFromGit::CPAN::Changes' => {
+         file_name    => 'CHANGES',
+         copy_to_root => 0,
       }),
 
+      #
       # [ManifestSkip]
       # [Manifest]
       # [License]
@@ -283,8 +286,9 @@ __END__
    [PruneCruft]
 
    ; Extra file creation
-   [GitFmtChanges]
-   log_format = [%h]%n* Author: %an <%ae>%n* Date:   %ai (%ar)%n%n%B
+   [ChangelogFromGit::CPAN::Changes]
+   file_name = CHANGES
+   copy_to_root = 0
 
    [ManifestSkip]
    [Manifest]
