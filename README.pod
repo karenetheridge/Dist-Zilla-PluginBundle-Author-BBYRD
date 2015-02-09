@@ -33,8 +33,9 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     [PruneCruft]
  
     ; Extra file creation
-    [GitFmtChanges]
-    log_format = [%h]%n* Author: %an <%ae>%n* Date:   %ai (%ar)%n%n%B
+    [ChangelogFromGit::CPAN::Changes]
+    file_name = CHANGES
+    copy_to_root = 0
  
     [ManifestSkip]
     [Manifest]
@@ -230,7 +231,7 @@ Sergey Romanov <complefor@rambler.ru>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2014 by Brendan Byrd.
+This software is Copyright (c) 2015 by Brendan Byrd.
 
 This is free software, licensed under:
 
