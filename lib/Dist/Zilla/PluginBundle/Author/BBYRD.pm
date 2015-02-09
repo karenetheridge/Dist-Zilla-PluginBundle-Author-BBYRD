@@ -12,7 +12,7 @@ with 'Dist::Zilla::Role::PluginBundle::Merged' => {
    mv_plugins => [ qw(
       Git::GatherDir OurPkgVersion PodWeaver Test::ReportPrereqs @TestingMania
       PruneCruft @Prereqs CheckPrereqsIndexed MetaNoIndex CopyFilesFromBuild
-      Git::CheckFor::CorrectBranch @Git TravisYML
+      Git::CheckFor::CorrectBranch @Git TravisYML Test::EOL
    ) ],
 };
 with 'Dist::Zilla::Role::PluginBundle::PluginRemover';
