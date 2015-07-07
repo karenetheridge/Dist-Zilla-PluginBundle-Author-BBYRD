@@ -157,8 +157,8 @@ sub configure {
       }],
 
       #
-      # [ContributorsFromGit]
-      'ContributorsFromGit',
+      # [Git::Contributors]
+      'Git::Contributors',
    );
 
    # Handle $resources->{x_IRC}
